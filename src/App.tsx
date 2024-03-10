@@ -9,6 +9,7 @@ function App() {
   const initMaxValue = 10;
   const [startValue, setStartValue] = useState(initStartValue);
   const [maxValue, setMaxValue] = useState(initMaxValue);
+  const [isSettingsFocused, setIsSettingsFocused] = useState(false);
 
 
 
@@ -20,11 +21,12 @@ function App() {
       maxValue={maxValue}
       setStartValue={setStartValue}
       setMaxValue={setMaxValue}
+      setIsSettingsFocused={setIsSettingsFocused}
       />
       <Counter 
       className="App-container"   
       startValue={startValue}
-      
+      isSettingsFocused={isSettingsFocused}
       maxValue={maxValue}/>
     </div>
   );

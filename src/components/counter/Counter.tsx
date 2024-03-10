@@ -4,6 +4,7 @@ type SettingsPropsType = {
   className: string;
   startValue: number;
   maxValue: number;
+  isSettingsFocused:boolean
 };
 
 export const Counter = (props: SettingsPropsType) => {
@@ -21,7 +22,7 @@ export const Counter = (props: SettingsPropsType) => {
     setDisplayValue(props.startValue);
     // You may also want to adjust the logic for enabling/disabling buttons here
   
-  }, [props.startValue]);
+  }, [props.startValue, props.maxValue]);
 
 
 
@@ -45,7 +46,11 @@ export const Counter = (props: SettingsPropsType) => {
 
   return (
     <div className={props.className}>
-      <div className="display indicator">{displayValue}</div>
+      <div className="display indicator">{
+        props.isSettingsFocused 
+        ? "Set start and max values in the settings" 
+        : displayValue}
+        </div>
       <div className="display">
         <Button
           onClick={increase}

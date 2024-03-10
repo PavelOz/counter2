@@ -3,7 +3,8 @@ type InputPropsType = {
   title?: String;
   value: number;
   onChange: (value: number) => void;
-  errorText?: string | undefined;
+  errorText: string[];
+  setIsSettingsFocused: (value:boolean)=>void
 };
 
 export const SettingsInput = ({
@@ -12,6 +13,7 @@ export const SettingsInput = ({
   value,
   onChange,
   errorText,
+  setIsSettingsFocused
 }: InputPropsType) => {
   return (
     <>
@@ -21,9 +23,14 @@ export const SettingsInput = ({
           type="number"
           value={value}
           onChange={(event) => onChange(Number(event.target.value))}
+          onFocus={()=>setIsSettingsFocused(true)}
+          onBlur={()=>setIsSettingsFocused(false)}
         />
       </div>
-      {errorText ? <div className="error">{errorText}</div> : undefined}
+      {errorText.map(errorEl=>(
+        <div className="error">{errorEl}</div>
+      )
+      )}
     </>
   );
 };
